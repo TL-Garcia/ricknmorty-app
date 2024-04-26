@@ -1,4 +1,4 @@
-import { Link } from '../link/Link';
+import { Link } from '../../../../components/link/Link';
 import './Header.scss';
 
 export const Header = () => {

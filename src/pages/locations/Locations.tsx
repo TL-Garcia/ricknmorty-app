@@ -1,5 +1,5 @@
-import { InfoCardList } from '../../components/info-card/InfoCardList';
-import { InfoItem } from '../../components/info-card/types';
+import { InfoCardList } from '../../ui/components/info-card/InfoCardList';
+import { InfoItem } from '../../ui/components/info-card/types';
 import { LocationSchema, useGetLocations } from './hooks/useGetLocations';
 
 const locationsToInfoItems = (location: LocationSchema): InfoItem => ({

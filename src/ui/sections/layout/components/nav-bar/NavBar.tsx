@@ -1,4 +1,4 @@
-import { NavLink } from '../link/NavLink';
+import { NavLink } from '../../../../components/link/NavLink';
 import './NavBar.scss';
 
 export const NavBar = () => {
