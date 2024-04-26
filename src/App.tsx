@@ -1,11 +1,8 @@
 import './App.css';
+import Pages from './pages/Routes';
 
 function App() {
-  return (
-    <>
-      <h1>Rick and Morty</h1>
-    </>
-  );
+  return <Pages />;
 }
 
 export default App;
