@@ -4,19 +4,15 @@
   grid-template-rows: auto 1fr;
   min-height: 100vh;
 
-  &__content-wrapper {
-    background-color: var(--color-background-inverse);
+  background-color: var(--color-background-inverse);
 
-    & .content {
-      /*Avoid occupiying very large screens completely*/
-      max-width: 1500px;
-      margin: auto;
-      padding: var(--gutter-padding);
-    }
+  &__content {
+    max-width: 1500px;
+    padding: 0 1.5rem;
+    margin: auto;
   }
 }
 
 .footer {
-  background-color: var(--color-background-inverse);
   padding: var(--gutter-padding);
 }

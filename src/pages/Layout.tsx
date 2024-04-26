@@ -1,16 +1,19 @@
 import { Outlet } from 'react-router-dom';
 import './Layout.scss';
-import { Header } from '../components/header/Header';
+import { NavBar } from '../components/nav-bar/NavBar';
+import { Hero } from '../components/hero/Hero';
 
 export default function Layout() {
   return (
     <div className="layout">
-      <Header />
-      <main className="layout__content-wrapper">
-        <div className="content">
+      <Hero />
+      <div className="layout__content-wrapper">
+        <div className="layout__content">
+          <NavBar />
+
           <Outlet />
         </div>
-      </main>
+      </div>
       <footer className="footer">
         <p>&copy; 2024 Rick and Morty Fan App. All rights reserved.</p>
       </footer>

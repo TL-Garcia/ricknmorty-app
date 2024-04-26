@@ -1,25 +1,4 @@
 .header {
-  padding-top: 1rem;
-  background-color: var(--color-background-inverse);
-  color: var(--color-font-inverse);
-
-  &__title {
-    padding: 0 var(--gutter-padding);
-  }
-
-  &__navbar {
-    display: flex;
-    gap: 0.5rem;
-
-    & > * {
-      padding: 0.5rem 0;
-      flex: 1 1;
-      text-align: center;
-      text-decoration: none;
-
-      &.active {
-        border-bottom: 2px solid white;
-      }
-    }
-  }
+  display: grid;
+  justify-content: center;
 }

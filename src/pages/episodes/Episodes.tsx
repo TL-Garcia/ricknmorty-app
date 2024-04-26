@@ -43,7 +43,6 @@ export default function Episodes() {
 
   return (
     <>
-      <h2>Episodes</h2>
       <ul className="info-card-list">
         {data?.map((r) => (
           <li className="info-card-list__item">
