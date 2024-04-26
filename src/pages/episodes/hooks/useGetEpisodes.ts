@@ -1,14 +1,5 @@
 import useSWR from 'swr';
-
-type APIResponse<TResponse> = {
-  info: {
-    count: number;
-    pages: number;
-    next: string; // URL for next page
-    prev: string; // URL for prev page
-  };
-  results: TResponse[];
-};
+import { APIResponse } from '../../../modules/__framework__/api/APIResponse';
 
 export type EpisodeSchema = {
   id: number;

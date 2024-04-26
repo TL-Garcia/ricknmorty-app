@@ -1,34 +1,13 @@
-import React from 'react';
+import { InfoCardList } from '../../components/info-card/InfoCardList';
+import { InfoItem } from '../../components/info-card/types';
 import './Episodes.scss';
-import { useGetEpisodes } from './hooks/useGetEpisodes';
+import { EpisodeSchema, useGetEpisodes } from './hooks/useGetEpisodes';
 
-interface InfoCardProps {
-  title: string;
-  detail: string;
-  date: string; // ISO String
-}
-
-function randomIntFromInterval(min: number, max: number) {
-  // min and max included
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-const InfoCard = ({ title, detail, date }: InfoCardProps) => {
-  return (
-    <div
-      className="wrapper"
-      style={{
-        backgroundImage: `url(background-0${randomIntFromInterval(1, 5)}.jpg)`,
-      }}
-    >
-      <article className="info-card">
-        <h4 className="info-card__title">{title}</h4>
-        <p>{detail}</p>
-        <p>{new Date(date).toDateString()}</p>
-      </article>
-    </div>
-  );
-};
+const episodesToInfoItems = (episode: EpisodeSchema): InfoItem => ({
+  title: episode.name,
+  type: episode.episode,
+  detail: new Date(episode.created).toDateString(),
+});
 
 export default function Episodes() {
   const { data, error, isLoading } = useGetEpisodes();
@@ -41,20 +20,5 @@ export default function Episodes() {
     return 'error';
   }
 
-  return (
-    <>
-      <ul className="info-card-list">
-        {data?.map((r) => (
-          <li className="info-card-list__item">
-            <InfoCard
-              title={r.name}
-              detail={r.episode}
-              date={r.created}
-              key={r.id}
-            />
-          </li>
-        ))}
-      </ul>
-    </>
-  );
+  return data && <InfoCardList items={data.map(episodesToInfoItems)} />;
 }

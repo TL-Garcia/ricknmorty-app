@@ -1,0 +1,16 @@
+.info-card {
+  border-radius: 12px;
+  background-image: url(var(--bg-img));
+  background-size: cover;
+
+  &__content {
+    position: relative;
+    padding: 1rem;
+    display: grid;
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+}

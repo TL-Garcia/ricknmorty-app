@@ -5,7 +5,7 @@ export const Hero = () => {
   return (
     <section className="hero">
       <div className="overlay">
-        <div className="hero__description">
+        <div className="hero__content">
           <Header />
           <header>
             <h2>Welcome to the Rick and Morty fan App!</h2>
