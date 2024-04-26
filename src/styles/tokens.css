@@ -1,0 +1,19 @@
+:root {
+  /* FOUNDATIONS */
+  --color-green: #53a440;
+  --color-lime: #c4d463;
+  --color-brown: #64482c;
+
+  --color-neutral-100: #080a07;
+  --color-neutral-10: white;
+
+  --font-body: 'Arial', sans-serif;
+  --font-title: 'Rubik', sans-serif;
+
+  /* DESIGN SYSTEM */
+  --color-background: var(--color-neutral-10);
+  --color-background-inverse: var(--color-neutral-100);
+
+  --color-font: var(--color-neutral-10);
+  --color-font-inverse: var(--color-neutral-10);
+}

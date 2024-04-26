@@ -1,0 +1,21 @@
+.layout {
+  --gutter-padding: 1.5rem;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+  margin: auto;
+
+  &__content-wrapper {
+    background-color: var(--color-background-inverse);
+
+    & .content {
+      max-width: 600px;
+      padding: var(--gutter-padding);
+    }
+  }
+}
+
+.footer {
+  background-color: var(--color-background-inverse);
+  padding: var(--gutter-padding);
+}

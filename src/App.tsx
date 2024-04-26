@@ -1,4 +1,3 @@
-import './App.css';
 import Pages from './pages/Routes';
 
 function App() {
