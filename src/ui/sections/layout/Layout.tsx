@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import './Layout.scss';
-import { NavBar } from './components/nav-bar/NavBar';
 import { Hero } from './components/hero/Hero';
+import { NavBar } from './components/nav-bar/NavBar';
 
 export default function Layout() {
   return (
@@ -10,7 +10,6 @@ export default function Layout() {
       <div className="layout__content-wrapper">
         <div className="layout__content">
           <NavBar />
-
           <Outlet />
         </div>
       </div>

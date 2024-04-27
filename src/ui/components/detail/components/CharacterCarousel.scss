@@ -1,0 +1,61 @@
+.character-carousel {
+  --img-width: 150px;
+  --gap: 1.5rem;
+  --max-avatars-in-view: 3;
+  --carousel-index: 0;
+
+  --avatar-width: calc(var(--img-width) + var(--gap));
+  position: relative;
+  max-width: calc(var(--avatar-width) * var(--max-avatars-in-view));
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+
+  &__content {
+    margin-right: -18px;
+    overflow: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    display: flex;
+    flex-wrap: nowrap;
+    gap: var(--gap);
+  }
+
+  &__button {
+    text-decoration: none;
+    padding: 0.5rem;
+    color: var(--color-neutral-100);
+    font-weight: bold;
+    background-color: var(--color-neutral-10);
+    position: absolute;
+
+    background: var(--color-neutral-10);
+    border-radius: 4px;
+
+    &:visited {
+      color: var(--color-neutral-100);
+    }
+
+    &--prev {
+      left: 0;
+    }
+
+    &--next {
+      right: 0;
+    }
+  }
+}
+
+.character {
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  flex: 1 0 150px;
+
+  &__avatar {
+    border-radius: 50%;
+  }
+}

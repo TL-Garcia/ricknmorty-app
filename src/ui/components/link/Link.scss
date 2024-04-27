@@ -1,7 +1,16 @@
 .link {
   text-decoration: none;
+  color: var(--color-font);
 
   &:visited {
-    color: inherit;
+    color: var(--color-font);
+  }
+
+  &--fake {
+    all: inherit;
+
+    &:focus-visible {
+      outline: 2px solid var(--color-neutral-10);
+    }
   }
 }

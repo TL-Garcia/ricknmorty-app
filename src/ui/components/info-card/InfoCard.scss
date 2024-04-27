@@ -3,6 +3,16 @@
   background-image: url(var(--bg-img));
   background-size: cover;
 
+  &:hover {
+    cursor: pointer;
+
+    transition: all 0.5 ease-in-out;
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.55);
+    }
+  }
+
   &__content {
     position: relative;
     padding: 1rem;

@@ -6,9 +6,10 @@ import { LinkProps } from './types';
 export const Link = ({
   children,
   href,
+  variant = 'default',
 }: React.PropsWithChildren<LinkProps>) => {
   return (
-    <ReactRouterLink to={href} className="link">
+    <ReactRouterLink to={href} className={`link link--${variant}`}>
       {children}
     </ReactRouterLink>
   );
