@@ -1,29 +1,66 @@
 import React from 'react';
 
-const DEFAULT_INCREMENT = 3;
-
-export const useCarouselCounter = (
-  maxLength: number,
-  increment = DEFAULT_INCREMENT
-) => {
+const useCounter = (min = 0, max = 100, increment = 1) => {
   const [count, setCount] = React.useState(0);
 
-  const decreaseCounter = () => {
+  const increase = React.useCallback(() => {
+    setCount((prev) => {
+      const nextValue = prev + increment;
+      const isOutOfBounds = nextValue > max;
+
+      return isOutOfBounds ? min : nextValue;
+    });
+  }, [increment, min, max]);
+
+  const decrease = React.useCallback(() => {
     setCount((prev) => {
       const nextValue = prev - increment;
-      const isOutOfBounds = nextValue < 0;
+      const isOutOfBounds = nextValue < min;
 
-      return isOutOfBounds ? maxLength : nextValue;
+      return isOutOfBounds ? max : nextValue;
     });
+  }, [increment, max, min]);
+
+  return { count, increase, decrease };
+};
+
+export const useCarousel = (
+  numberOfItems: number,
+  listRef: React.RefObject<HTMLUListElement>
+) => {
+  const { count, increase, decrease } = useCounter(0, numberOfItems);
+  const itemWidthRef = React.useRef<number>(0);
+
+  React.useLayoutEffect(() => {
+    const { current: listElement } = listRef;
+
+    if (!listElement) {
+      return;
+    }
+
+    const listItem = listElement.querySelector('li');
+
+    if (!listItem) {
+      return;
+    }
+
+    itemWidthRef.current = listItem.getBoundingClientRect().width;
+  }, [listRef]);
+
+  const moveRight = () => {
+    increase();
+    listRef.current?.scrollBy({ left: itemWidthRef.current });
   };
 
-  const increaseCounter = () =>
-    setCount((prev) => {
-      const nextValue = prev + DEFAULT_INCREMENT;
-      const isOutOfBounds = nextValue > maxLength;
+  const moveLeft = () => {
+    decrease();
+    listRef.current?.scrollBy({ left: -itemWidthRef.current });
+  };
 
-      return isOutOfBounds ? 0 : nextValue;
-    });
-
-  return { count, decreaseCounter, increaseCounter };
+  return {
+    moveLeft,
+    moveRight,
+    isOnLast: count === numberOfItems,
+    isOnFirst: count === 0,
+  };
 };

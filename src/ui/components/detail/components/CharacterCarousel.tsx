@@ -1,7 +1,7 @@
 import React from 'react';
 import { CharacterSchema } from '../../../../modules/characters/schema';
 import './CharacterCarousel.scss';
-import { useCarouselCounter } from './hooks/useCarouselCounter';
+import { useCarousel } from './hooks/useCarouselCounter';
 
 interface CharacterCarouselProps {
   characters: CharacterSchema[];
@@ -22,34 +22,33 @@ const Character = ({ character, index }: CharacterProps) => {
 };
 
 export const CharacterCarousel = ({ characters }: CharacterCarouselProps) => {
-  const { count, decreaseCounter, increaseCounter } = useCarouselCounter(
-    characters.length - 1
+  const listRef = React.useRef(null);
+  const { isOnLast, isOnFirst, moveRight, moveLeft } = useCarousel(
+    characters.length - 1,
+    listRef
   );
 
   return (
     <div className="character-carousel">
-      <a
-        href={`#carousel-item-${count}`}
-        onClick={decreaseCounter}
-        className="character-carousel__button character-carousel__button--prev"
+      <button
+        aria-hidden
+        onClick={moveLeft}
+        className={`character-carousel__button character-carousel__button--prev ${isOnFirst && 'hidden'}`}
       >
         {'<'}
-      </a>
-      <ul
-        className="character-carousel__content"
-        style={{ '--carouselIndex': count } as React.CSSProperties}
-      >
+      </button>
+      <ul ref={listRef} className="character-carousel__content">
         {characters.map((character, index) => (
           <Character key={character.id} character={character} index={index} />
         ))}
       </ul>
-      <a
-        href={`#carousel-item-${count}`}
-        onClick={increaseCounter}
-        className="character-carousel__button character-carousel__button--next"
+      <button
+        aria-hidden
+        onClick={moveRight}
+        className={`character-carousel__button character-carousel__button--next ${isOnLast && 'hidden'}`}
       >
         {'>'}
-      </a>
+      </button>
     </div>
   );
 };

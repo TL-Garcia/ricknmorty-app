@@ -6,14 +6,21 @@
 
   --avatar-width: calc(var(--img-width) + var(--gap));
   position: relative;
-  max-width: calc(var(--avatar-width) * var(--max-avatars-in-view));
+  max-width: calc(
+    var(--avatar-width) * var(--max-avatars-in-view) - var(--gap)
+  );
   overflow: hidden;
   display: flex;
   align-items: center;
 
   &__content {
-    margin-right: -18px;
-    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    overflow: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
 
@@ -31,11 +38,9 @@
     position: absolute;
 
     background: var(--color-neutral-10);
+    border: none;
     border-radius: 4px;
-
-    &:visited {
-      color: var(--color-neutral-100);
-    }
+    cursor: pointer;
 
     &--prev {
       left: 0;
