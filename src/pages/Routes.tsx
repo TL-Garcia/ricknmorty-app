@@ -1,10 +1,4 @@
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate,
-  useParams,
-} from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from '../ui/sections/layout/Layout';
 import Episodes from './episodes/Episodes';
 import Locations from './locations/Locations';
@@ -20,10 +14,14 @@ export default function Pages() {
             path="/"
             element={<Navigate to="/locations" replace />}
           ></Route>
-          <Route path="/episodes" element={<Episodes />} />
-          <Route path="/episodes/:id" element={<EpisodeDetail />} />
-          <Route path="/locations" element={<Locations />} />
-          <Route path="/locations/:id" element={<LocationDetail />} />
+          <Route path="/episodes">
+            <Route element={<Episodes />} index />
+            <Route path=":id" element={<EpisodeDetail />} />
+          </Route>
+          <Route path="/locations">
+            <Route element={<Locations />} index />
+            <Route path=":id" element={<LocationDetail />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
