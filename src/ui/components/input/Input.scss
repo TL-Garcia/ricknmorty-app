@@ -1,0 +1,17 @@
+.input {
+  display: flex;
+  flex-direction: column;
+
+  &__label {
+    margin-bottom: 0.35rem;
+  }
+
+  &__box {
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--box-border-radius);
+    &:not(:placeholder-shown, :focus):invalid {
+      outline: 1px solid red;
+    }
+  }
+}

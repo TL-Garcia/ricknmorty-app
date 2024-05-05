@@ -1,10 +1,9 @@
 import useSWR from 'swr';
 import { CharacterCarousel } from './components/CharacterCarousel';
 import { CharacterSchema } from '../../../modules/characters/schema';
-import { ErrorMessage } from '../error-message/ErrorMessage';
-import { Loader } from '../loader/Loader';
+import { ErrorMessage } from '../../components/error-message/ErrorMessage';
+import { Loader } from '../../components/loader/Loader';
 import './Detail.scss';
-import { Link } from '../link/Link';
 
 interface DetailProps {
   title: string;
@@ -33,8 +32,6 @@ export const Detail = ({ title, subtitle, charactersURLs }: DetailProps) => {
           <p>{subtitle}</p>
         </header>
         <CharacterCarousel characters={characters} />
-
-        <Link href={'..'}>Back</Link>
       </article>
     );
   }

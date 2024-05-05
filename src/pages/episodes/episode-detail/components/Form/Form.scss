@@ -1,0 +1,9 @@
+.form {
+  display: grid;
+  gap: 1rem;
+  max-width: min(500px, 100%);
+
+  &__title {
+    font-size: 1.25rem;
+  }
+}

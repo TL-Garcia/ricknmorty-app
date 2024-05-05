@@ -16,4 +16,6 @@
 
   --color-font: var(--color-neutral-10);
   --color-font-inverse: var(--color-neutral-10);
+
+  --box-border-radius: 4px;
 }
